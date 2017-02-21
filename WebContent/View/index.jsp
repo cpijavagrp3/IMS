@@ -28,7 +28,7 @@
 <script type="text/javascript">
 
 var path = "${pageContext.request.contextPath}";
-
+alert(1);
 $("btnLogin").observe("click", login);
 
 function login () {
