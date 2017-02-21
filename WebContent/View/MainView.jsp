@@ -5,11 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Inventory Management System</title>
+<script src="${pageContext.request.contextPath}/js/prototype.js"></script>
 </head>
 <body>
-<table>
-<tr><td><jsp:include page="${pageContext.request.contextPath}/View/MenuView.jsp"></jsp:include></td></tr>
-<tr><td></td></tr>
-</table>
 </body>
 </html>
