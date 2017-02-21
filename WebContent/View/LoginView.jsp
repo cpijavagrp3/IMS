@@ -5,10 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Inventory Management System</title>
-<script src="${pageContext.request.contextPath}/js/prototype.js"></script>
+<script src="${pageContext.request.contextPath}/JS/prototype.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/CSS/MainStyle.css" type="text/css">
 </head>
 <body>
-	<div id="mainContent">
+	<div id="initContent">
 		<table align="center">
 			<tr>
 				<td><label>Username: </label></td>
@@ -32,10 +34,15 @@ var path = "${pageContext.request.contextPath}";
 $("btnLogin").observe("click", login);
 
 function login () {
-	new Ajax.Request(path + "/index" , {
+	new Ajax.Request(path + "/login" , {
 		method : "post",
 		parameters : {
-			
+			action : "login",
+			userName : $F("txtUsername"),
+			pass : $F("txtPassword")
+		},
+		onComplete : function(response) {
+			$('initContent').update(response.responseText);
 		}
 	});
 }
