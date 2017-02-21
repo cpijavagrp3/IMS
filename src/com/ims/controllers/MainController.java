@@ -28,9 +28,13 @@ public class MainController extends HttpServlet {
 				
 				if(user.equals("CPI") && pass.equals("123")) {
 					page = "View/HomeView.jsp";
-				}	
-				
-			}
+				}		
+			} else if (action.equals("assignment")) {
+				page = "View/UnitAssignment/UnitAssignmentView.jsp";
+			} else
+				page = "View/test.jsp";
+			
+			System.out.println(page);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
