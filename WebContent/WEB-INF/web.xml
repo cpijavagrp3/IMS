@@ -4,7 +4,7 @@
   
    <servlet>
 		<servlet-name>servlet</servlet-name>
-		<servlet-class>com.ims.controller.MainController</servlet-class>
+		<servlet-class>com.ims.controllers.MainController</servlet-class>
 	</servlet>
 	
 	<servlet>
@@ -14,7 +14,7 @@
 
 	<servlet-mapping>
 		<servlet-name>servlet</servlet-name>
-		<url-pattern>/index</url-pattern>
+		<url-pattern>/main</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
