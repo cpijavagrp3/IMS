@@ -31,10 +31,10 @@ public class MainController extends HttpServlet {
 				}		
 			} else if (action.equals("assignment")) {
 				page = "View/UnitAssignment/UnitAssignmentView.jsp";
+			} else if (action.equals("assignee")){
+				page = "View/AssigneeMaintenance/assigneeListing.jsp";
 			} else
 				page = "View/test.jsp";
-			
-			System.out.println(page);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

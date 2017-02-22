@@ -1,0 +1,20 @@
+
+body{
+	font-family: Candara;
+}
+			
+th{
+	padding: 5px 10px 5px 10px;
+}
+			
+td{
+	padding: 3px 10px 3px 2px;
+}
+			
+input{
+	padding: 3px 10px 3px 10px;
+}
+			
+select{
+	padding: 5px 0 5px 3px;
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sqlmap-2.dtd">
+
+<sqlMap namespace="Users">
+	
+	<typeAlias alias="UsersClass" type="com.ims.entity.Users" />
+	
+	<resultMap id="getUsersMap" class="UsersClass">
+		<result column="user_id"			property="userId" />
+		<result column="first_name"			property="firstName" />
+		<result column="last_name"			property="lastName" />
+		<result column="middle_initial"		property="middleInitial" />
+		<result column="active_tag"			property="status" />
+		<result column="user_access"		property="userAccess" />
+		<result column="entry_date"			property="entryDate" />
+	</resultMap>
+	
+	<select id="getUsers" resultMap="getUsersMap">
+		SELECT user_id, first_name, middle_initial, last_name, active_tag, user_access, entry_date  
+		  FROM IMS_USERS_3
+	</select>
+	
+	<insert id = "insertNewUser" parameterClass = "java.util.Map">
+		BEGIN
+			INSERT INTO IMS_USERS_3
+			(user_id, first_name, last_name, middle_initial, email, password, active_tag, user_access, entry_date, remarks, last_user_id, last_update)
+			VALUES 
+			(#userId#, #firstName#, #lastName#, #middleInitial#, #email#, #password#, #status#, #userAccess#, #entryDate#, #remarks#, #lastUpdatedBy#, #lastUpdate#);
+		END;
+	</insert>
+	
+	
+	<resultMap id="getSearchUsersMap" class="UsersClass">
+		<result column="user_id"			property="userId" />
+		<result column="first_name"			property="firstName" />
+		<result column="last_name"			property="lastName" />
+		<result column="middle_initial"		property="middleInitial" />
+		<result column="email"				property="status" />
+	</resultMap>
+	
+	<select id="getSearchUsers" resultMap="getSearchUsersMap">
+		SELECT * FROM IMS_USERS_3 
+		 WHERE 
+			user_id LIKE '%#userId#%' OR 
+			last_name LIKE '%#lastName#%' OR 
+			first_name LIKE '%#firstName#%' OR
+			middle_initial LIKE '%#middleInitial#%' OR
+			email LIKE '%#email#%';
+	</select>
+</sqlMap>
