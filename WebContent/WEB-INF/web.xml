@@ -9,6 +9,11 @@
 		<servlet-name>servlet</servlet-name>
 		<servlet-class>com.ims.controllers.MainController</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>AssigneeMaintenanceController</servlet-name>
+		<servlet-class>com.ims.controllers.assigneemaintenance.AssigneeMaintenanceController</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>servlet</servlet-name>
@@ -24,9 +29,13 @@
 		<servlet-name>maincontroller</servlet-name>
 		<url-pattern>/ComputerUnitsInventory</url-pattern>
 	</servlet-mapping>
-
-	<welcome-file-list>
-		<welcome-file>View/computerUnitsInventory.jsp</welcome-file>
-	</welcome-file-list>
-
+	
+	<servlet-mapping>
+		<servlet-name>AssigneeMaintenanceController</servlet-name>
+		<url-pattern>/welcome</url-pattern>
+	</servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>/View/AssigneeMaintenance/assigneeListing.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>
