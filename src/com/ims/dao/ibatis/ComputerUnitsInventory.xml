@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL MAP 2.0//EN"
+"http://ibatis.apache.org/dtd/sqlmap-2.dtd" >
+
+<sqlMap namespace = "IMS_COMP_UNITS_3">
+	<typeAlias alias = "addComputerUnitClass" type = "com.ims.computerunit.AddComputerUnit"></typeAlias>
+	<resultMap id = "getUnitMap" class = "addComputerUnitClass">
+		<result column = "unit_no" property = "unitNo" ></result>
+		<result column = "unit_name" property = "unitName" ></result>
+		<result column = "tag_number" property = "tagNumber" ></result>
+		<result column = "ip_address" property = "ipAddress" ></result>
+		<result column = "type" property = "type" ></result>
+		<result column = "acquired_date" property = "acquiredDate" ></result>
+		<result column = "description" property = "description" ></result>
+		<result column = "serial_no" property = "serialNo" ></result>
+		<result column = "brand" property = "brand" ></result>
+		<result column = "model" property = "model" ></result>
+		<result column = "color" property = "color" ></result>
+		<result column = "remarks" property = "remarks" ></result>
+		<result column = "user_id" property = "userId" ></result>
+		<result column = "last_update" property = "lastUpdate" ></result>
+	</resultMap>
+	<select id = "getUnit" resultMap = "getUnitMap" >
+		<!-- SELECT unit_no, unit_name, tag_number, ip_address, type, brand, model, serial_no, acquired_date -->
+		SELECT *
+			FROM ims_comp_units_3
+	</select> 
+	
+	<insert id = "insertNewUnit" parameterClass = "java.util.Map">
+		BEGIN
+			INSERT INTO ims_comp_units_3
+					(unit_no, unit_name, tag_number,ip_address,type,acquired_date,description,serial_no,brand,model,color,remarks,user_Id,last_Update)
+			VALUES (#unitNo#,#unitName#,#tagNumber#,#ipAddress#,#type#,#acquiredDate#,#description#,#serialNo#,#brand#,#model#,#color#,#remarks#,#userId#,#lastUpdate#);
+			COMMIT;
+		END;
+	</insert>
+	
+	
+
+</sqlMap>
+
+
+
+
+
+
