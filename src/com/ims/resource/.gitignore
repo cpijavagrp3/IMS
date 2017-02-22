@@ -1,1 +1,6 @@
 
+/.gitignore
+/beans.xml
+/SqlMapConfig.xml
+/userMaintenanceBeans.xml
+/userMaintenanceSqlMapConfig.xml
