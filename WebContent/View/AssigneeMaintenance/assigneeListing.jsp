@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,7 +6,6 @@
 <html>
 <head>
 <script src="${pageContext.request.contextPath}/JS/prototype.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Assignee Listing</title>
 </head>
@@ -39,6 +38,7 @@
 	</table>
 	
 </div>
+</div>
 </body>
 <script>
 $("btnAddAssignee").observe("click", function() {
@@ -46,7 +46,7 @@ $("btnAddAssignee").observe("click", function() {
 });
 
 function addAssignee() {
-	new Ajax.Request("${pageContext.request.contextPath}"+"/welcome",
+	new Ajax.Request("${pageContext.request.contextPath}"+"/AssigneeMaintenanceController",
 			{
 		method : "post",
 		parameters : {
@@ -58,20 +58,26 @@ function addAssignee() {
 }
 
 function onLoad() {
-	new Ajax.Request("${pageContext.request.contextPath}"+"/welcome",
+	new Ajax.Request("${pageContext.request.contextPath}"+"/AssigneeMaintenanceController",
 			{
 		method : "get",
 		parameters : {
 			action : "onLoad"
 		}, 	onComplete : function(response) {
+			alert(response.responseText);
 			$("mainContent").update(response.responseText)
+			
 		}
 	});
 	
 }
+if('${initiate}' != "Y") {
+	onLoad();
+}
+
 
 if('${backToAssigneeListing}') {
 	onLoad();
-}
+} 
 </script>
 </html>

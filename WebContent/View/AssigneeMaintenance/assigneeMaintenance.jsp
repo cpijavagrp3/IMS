@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
@@ -78,12 +77,13 @@ $("btnSave").observe("click", function() {
 });
 
 function saveRecord() {
-	new Ajax.Request("${pageContext.request.contextPath}"+"/welcome",
+	String action = ('${maintainAction}' =='add') ? "insert" : 'update';
+	alert(action);
+	new Ajax.Request("${pageContext.request.contextPath}"+"/AssigneeMaintenanceController",
 			{
 		method : "post",
 		parameters : {
-			action : (('${maintainAction}' =='add') ? 'insert' : 'update'),
-			//action : "insert",
+			action : action,
 			assigneeName : $F("txtAssigneeName"),
 			department : $F("txtDepartment"),
 			location : $F("txtLocation"),
@@ -95,7 +95,7 @@ function saveRecord() {
 }
 
 function backToAssigneeListing() {
-	new Ajax.Request("${pageContext.request.contextPath}"+"/welcome",
+	new Ajax.Request("${pageContext.request.contextPath}"+"/AssigneeMaintenanceController",
 			{
 		method : "post",
 		parameters : {
@@ -106,7 +106,7 @@ function backToAssigneeListing() {
 	});
 }
 
-if('${maintainAction}' =='add') {
+if('${maintainAction}'=="add") {
 	$("txtAssigneeNumber").setAttribute("disabled","disabled");
 	$("txtEntryDate").setAttribute("disabled","disabled");
 	$("txtUserId").setAttribute("disabled","disabled");

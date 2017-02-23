@@ -11,7 +11,7 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 	
 	<bean id ="sqlMapClient" class ="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 	<property name ="configLocation">
-		<value>/com/ims/resource/peripherals/peripheralsSqlMapConfig.xml
+		<value>/com/ims/resource/SqlMapConfig.xml
 			</value>
 		</property>
 		<property name ="dataSource" ref ="dataSource"/>

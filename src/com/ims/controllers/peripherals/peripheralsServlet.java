@@ -16,7 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ims.entity.peripherals.UnitClass;
 import com.ims.service.peripherals.PeripheralsService;
-@WebServlet("/peripheralsServlet")
+
 public class peripheralsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
