@@ -7,3 +7,8 @@
 	href="${pageContext.request.contextPath}/CSS/bootstrap.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/CSS/MainStyle.css">
+<script type="text/JavaScript">
+
+var unitNoGlobal;
+
+</script>

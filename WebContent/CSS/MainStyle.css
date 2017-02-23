@@ -48,3 +48,8 @@ body {
     .sidenav {padding-top: 15px;}
     .sidenav label {font-size: 18px;}
 }
+
+.selectedRowUn {
+	background-color: #98D0FF;
+	color: #0066CC;
+}

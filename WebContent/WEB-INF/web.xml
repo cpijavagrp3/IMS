@@ -29,10 +29,10 @@
 		<servlet-name>maincontroller</servlet-name>
 		<url-pattern>/ComputerUnitsInventory</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet-mapping>
 		<servlet-name>AssigneeMaintenanceController</servlet-name>
-		<url-pattern>/welcome</url-pattern>
+		<url-pattern>/AssigneeMaintenanceController</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -58,4 +58,14 @@
   <welcome-file-list>
     <welcome-file>/View/LoginView.jsp</welcome-file>
   </welcome-file-list>
+  
+  	<servlet>
+		<servlet-name>peripheralsServlet</servlet-name>
+		<servlet-class>com.ims.controllers.peripherals.peripheralsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>peripheralsServlet</servlet-name>
+		<url-pattern>/peripheralsServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
