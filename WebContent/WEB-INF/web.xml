@@ -34,7 +34,7 @@
 		<servlet-name>AssigneeMaintenanceController</servlet-name>
 		<url-pattern>/AssigneeMaintenanceController</url-pattern>
 	</servlet-mapping>
-
+	
   <welcome-file-list>
     <welcome-file>/View/LoginView.jsp</welcome-file>
   </welcome-file-list>
