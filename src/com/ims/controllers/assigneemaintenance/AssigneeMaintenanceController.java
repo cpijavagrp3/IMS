@@ -21,13 +21,15 @@ public class AssigneeMaintenanceController extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String page=null;
+		System.out.println("doGEt");
 		ApplicationContext context = 
-				new ClassPathXmlApplicationContext("/com/ims/resource/ApplicationContext.xml");
-		String action = "onLoad";
-		//String action=request.getParameter("action");
+				new ClassPathXmlApplicationContext("/com/ims/resource/AssigneeContext.xml");
+		String action=request.getParameter("action");
+		
 		if(action.equals("onLoad")) {
 			page = "View/AssigneeMaintenance/assigneeListing.jsp";
 			System.out.println("Im in onLoad");
+			request.setAttribute("initiate", "Y");
 			AssigneeMaintenanceService service = (AssigneeMaintenanceService) 
 					context.getBean("assigneeMaintenanceServiceBean");
 			try {
@@ -36,10 +38,7 @@ public class AssigneeMaintenanceController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		List<Assignee> l = (List<Assignee>) request.getAttribute("assigneeList");
-		for(int i = 0; i < l.size();i++) {
-			System.out.println(l.get(i).getAssigneeName() + "test");
-		}
+		System.out.println(request.getAttribute("initiate"));
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);	
@@ -48,11 +47,13 @@ public class AssigneeMaintenanceController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String page=null;
+		System.out.println("doPOST");
 		ApplicationContext context = 
-				new ClassPathXmlApplicationContext("/com/ims/resource/ApplicationContext.xml");
+				new ClassPathXmlApplicationContext("/com/ims/resource/AssigneeContext.xml");
 		String action = request.getParameter("action");
 		AssigneeMaintenanceService service = (AssigneeMaintenanceService) 
 				context.getBean("assigneeMaintenanceServiceBean");
+		System.out.println(action);
 		
 		if(action.equals("addAssignee")) {
 			page = "View/AssigneeMaintenance/assigneeMaintenance.jsp";	
@@ -60,6 +61,7 @@ public class AssigneeMaintenanceController extends HttpServlet {
 		} else if(action.equals("backToAssigneeListing")) {
 			page = "View/AssigneeMaintenance/assigneeListing.jsp";	
 			request.setAttribute("backToAssigneeListing", true);
+			System.out.println("back to assignee listing");
 		} else if(action.equals("insert")) {
 			try {
 				service.insertNewAssignee(request);
@@ -67,7 +69,14 @@ public class AssigneeMaintenanceController extends HttpServlet {
 			} catch(SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		} /*else if(action.equals("assignee")) {
+			page = "assigneeListing.jsp";
+			try {
+				service.getAssignee(request);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}*/
 		/*SpringService service = (SpringService) context.getBean("serviceBean");
 		if(action.equals("insert")) {
 			try {
