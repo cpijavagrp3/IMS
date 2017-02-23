@@ -1,16 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
-<head>
-<script src="${pageContext.request.contextPath}/JS/prototype.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/style.css">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Assignee Maintenance</title>
-</head>
 <body>
-<div id="mainContent">
 	<input type="button" id="btnBack" value="BACK"/>
 	<label class="header">ASSIGNEE MAINTENANCE</label>
 	<table>
@@ -63,9 +54,6 @@
 		</td>
 	</tr>
 	</table>
-
-
-</div>
 </body>
 <script>
 $("btnBack").observe("click", function() {
@@ -77,8 +65,7 @@ $("btnSave").observe("click", function() {
 });
 
 function saveRecord() {
-	String action = ('${maintainAction}' =='add') ? "insert" : 'update';
-	alert(action);
+	var action = ('${maintainAction}' =='add') ? "insert" : 'update';
 	new Ajax.Request("${pageContext.request.contextPath}"+"/AssigneeMaintenanceController",
 			{
 		method : "post",
@@ -106,11 +93,16 @@ function backToAssigneeListing() {
 	});
 }
 
-if('${maintainAction}'=="add") {
+if('${maintainAction}'=='add') {
+	alert('add');
 	$("txtAssigneeNumber").setAttribute("disabled","disabled");
 	$("txtEntryDate").setAttribute("disabled","disabled");
 	$("txtUserId").setAttribute("disabled","disabled");
 	$("txtLastUpdate").setAttribute("disabled","disabled");
+}
+
+if('${fromUpdateButton}'=='Y') {
+	
 }
 </script>
 </html>
