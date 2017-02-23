@@ -36,12 +36,12 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>maincontroller1</servlet-name>
+		<servlet-name>UserMaintenanceController</servlet-name>
 		<servlet-class>com.ims.controllers.UserMaintenanceController</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>maincontroller1</servlet-name>
+		<servlet-name>UserMaintenanceController</servlet-name>
 		<url-pattern>/UserMaintenanceController</url-pattern>
 	</servlet-mapping>
 	
