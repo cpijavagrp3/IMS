@@ -9,6 +9,7 @@
 			id="lblMaintenance">User Maintenance</label> <label
 			id="lblInventory">Unit Inventory</label> <label id="lblAssignment">Unit
 			Assignment</label> <label id="lblPeripherals">Peripherals</label>
+			<label id="lblAssignee">Assignee Listing</label>
 	</div>
 
 	<div id="mainContent"></div>
@@ -36,6 +37,10 @@
 	
 	$("lblPeripherals").observe("click", function() {
 		goNav("peripherals");
+	})
+	
+	$("lblAssignee").observe("click", function() {
+		goNav("assignee");
 	})
 
 	function goNav(dest) {

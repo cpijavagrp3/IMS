@@ -32,4 +32,13 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 		<property name="sqlMapClient" ref="sqlMapClient"></property>
 	</bean>
 	
+	<bean id="unitAssignmentServiceBean" class="com.ims.service.impl.unitAssignment.UnitAssignmentServiceImpl"
+			depends-on="assigneeMaintenanceDaoBean" >
+		<property name="dao" ref="assigneeMaintenanceDaoBean"></property>
+	</bean>
+	
+	<bean id="unitAssignmentDaoBean" class="com.ims.dao.impl.unitAssignment.unitAssignmentDaoImpl" depends-on="sqlMapClient">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	
 </beans>

@@ -5,4 +5,5 @@
 <!-- a -->
 <sqlMapConfig>
 	<sqlMap resource="com/ims/dao/ibatis/assigneemaintenance/Assignee.xml" />
+	<sqlMap resource="com/ims/dao/ibatis/unitAssignment/UnitAssignment.xml" />
 </sqlMapConfig>
