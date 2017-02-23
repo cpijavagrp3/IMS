@@ -6,7 +6,7 @@
 <html>
 <head>
 <script src="${pageContext.request.contextPath}/JS/prototype.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Assignee Maintenance</title>
 </head>
