@@ -9,6 +9,11 @@
 		<servlet-name>servlet</servlet-name>
 		<servlet-class>com.ims.controllers.MainController</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>AssigneeMaintenanceController</servlet-name>
+		<servlet-class>com.ims.controllers.assigneemaintenance.AssigneeMaintenanceController</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>servlet</servlet-name>
@@ -24,12 +29,32 @@
 		<servlet-name>maincontroller</servlet-name>
 		<url-pattern>/ComputerUnitsInventory</url-pattern>
 	</servlet-mapping>
-
+	
 	<servlet-mapping>
 		<servlet-name>AssigneeMaintenanceController</servlet-name>
 		<url-pattern>/welcome</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>maincontroller1</servlet-name>
+		<servlet-class>com.ims.controllers.UserMaintenanceController</servlet-class>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>maincontroller1</servlet-name>
+		<url-pattern>/UserMaintenanceController</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>unitAssignment</servlet-name>
+	<servlet-class>com.ims.controllers.unitAssignment.UnitAssignmentController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	<servlet-name>unitAssignment</servlet-name>
+	<url-pattern>/unitAssignment</url-pattern>
+	</servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>/View/LoginView.jsp</welcome-file>
   </welcome-file-list>
