@@ -44,5 +44,26 @@ public class UserMaintenanceDaoImpl implements UserMaintenanceDao{
 			this.getSqlMapClient().endTransaction();
 		}
 	}
+	
+	@Override
+	public void updateUser(Map<String, Object> params) throws SQLException {
+		try{
+			this.getSqlMapClient().startTransaction();
+			this.getSqlMapClient().getCurrentConnection().setAutoCommit(false);
+			this.getSqlMapClient().startBatch();
+			
+			this.getSqlMapClient().insert("updateUser", params);
+			this.getSqlMapClient().executeBatch();
+			
+			this.getSqlMapClient().getCurrentConnection().commit();
+		}catch(SQLException e){
+			this.getSqlMapClient().getCurrentConnection().rollback();
+			System.out.println("in catch");
+			e.printStackTrace();
+		}finally{
+			this.getSqlMapClient().endTransaction();
+		}
+	}
+
 
 }
