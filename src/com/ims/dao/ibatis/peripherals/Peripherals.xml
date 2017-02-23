@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sqlmap-2.dtd">
+
+<sqlMap namespace="Peripherals">
+	 <typeAlias alias="PeripheralsClass" type="com.ims.entity.peripherals.Peripherals" />
+	<resultMap id="getPerMap" class="PeripheralsClass">
+		<result column="unit_No_3" property="unitNo" />
+		<result column="PERIPHERAL_NO_3" property="peripheralNo" />
+		<result column="PERIPHERAL_TYPE_3" property="peripheralType" />
+		<result column="TAG_NUMBER_3" property="tagNumber" />
+		<result column="ACQUIRED_DATE_3" property="acquiredDate" />
+		<result column="DESCRIPTION_3" property="description" />
+		<result column="SERIAL_NO_3" property="serialNo" />
+		<result column="BRAND_3" property="brand" />
+		<result column="MODEL_3" property="model" />
+		<result column="COLOR_3" property="color" />
+		<result column="REMARKS_3" property="remarks" />
+		<result column="USER_ID_3" property="userId" />
+		<result column="LAST_UPDATE_3" property="lastUpdate" />
+
+	</resultMap>
+
+	<typeAlias alias="UnitClass" type="com.ims.entity.peripherals.UnitClass" />
+	<resultMap id="getUnit" class="UnitClass">
+		<result column="unit_No_3" property="unitNo" />
+		<result column="unitName" property="unitName" />
+		<result column="tagNumber" property="tagNumber" />
+		<result column="type" property="type" />
+		<result column="ipAddress" property="ipAddress" />
+		<result column="serialNo" property="serialNo" />
+		<result column="brand" property="brand" />
+		<result column="model" property="model" />
+		<result column="color" property="color" />
+		<result column="location" property="location" />
+		<result column="status" property="status" />
+		<result column="assignee" property="assignee" />
+
+	</resultMap>
+	<select id="getUnit" resultMap="getUnit">
+		SELECT unit_No_3
+		FROM
+		IMS_COMP_UNITS_3
+	</select>
+	<select id="getPer" resultMap="getPerMap">
+		SELECT unit_No_3, PERIPHERAL_NO_3
+		, PERIPHERAL_TYPE_3 ,
+		TAG_NUMBER_3 , ACQUIRED_DATE_3 , DESCRIPTION_3,
+		SERIAL_NO_3 , BRAND_3 , MODEL_3 , COLOR_3 ,
+		REMARKS_3 , USER_ID_3 , LAST_UPDATE_3
+		FROM IMS_PERIPHERALS_3
+	</select>
+</sqlMap>	
