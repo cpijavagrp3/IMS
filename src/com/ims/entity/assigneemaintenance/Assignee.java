@@ -1,5 +1,10 @@
 package com.ims.entity.assigneemaintenance;
 
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Assignee {
 
 	private Integer assigneeNumber;
@@ -79,8 +84,13 @@ public class Assignee {
 		return entryDate;
 	}
 
-	public void setEntryDate(String entryDate) {
-		this.entryDate = entryDate;
+	public void setEntryDate(String entryDate) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat();
+        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        DateFormat targetFormat = new SimpleDateFormat("MMM dd, yyyy");
+        Date date = originalFormat.parse(entryDate);
+        String formattedDate = targetFormat.format(date); 
+		this.entryDate = formattedDate.toUpperCase();
 	}
 
 	public String getRemarks() {

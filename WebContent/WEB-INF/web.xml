@@ -25,11 +25,16 @@
 		<url-pattern>/ComputerUnitsInventory</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>AssigneeMaintenanceController</servlet-name>
+		<servlet-class>com.ims.controllers.assigneemaintenance.AssigneeMaintenanceController</servlet-class>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>AssigneeMaintenanceController</servlet-name>
 		<url-pattern>/AssigneeMaintenanceController</url-pattern>
 	</servlet-mapping>
-
+	
   <welcome-file-list>
     <welcome-file>/View/LoginView.jsp</welcome-file>
   </welcome-file-list>
