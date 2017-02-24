@@ -24,6 +24,14 @@
 		ORDER BY assignee_no
 	</select>
 	
+	<select id="getAssigneeForUpdate" resultMap="getAssigneeMap" parameterClass="java.lang.Integer">
+		SELECT 	assignee_no, assignee_name, department, location, email,
+				active_tag, entry_date , remarks, user_id, last_update
+		  FROM ims_assignee_3
+		 WHERE assignee_no = #assigneeNumber#
+		ORDER BY assignee_no
+	</select>
+	
  	<insert id="insertNewAssignee" parameterClass="java.util.Map">
 		BEGIN
 		INSERT INTO IMS_ASSIGNEE_3 

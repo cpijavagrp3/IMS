@@ -20,16 +20,6 @@
 		<url-pattern>/main</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>maincontroller</servlet-name>
-		<servlet-class>com.ims.controller.ComputerUnitsInventory</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>maincontroller</servlet-name>
-		<url-pattern>/ComputerUnitsInventory</url-pattern>
-	</servlet-mapping>
-
 	<servlet-mapping>
 		<servlet-name>AssigneeMaintenanceController</servlet-name>
 		<url-pattern>/AssigneeMaintenanceController</url-pattern>
@@ -67,5 +57,15 @@
 	<servlet-mapping>
 		<servlet-name>peripheralsServlet</servlet-name>
 		<url-pattern>/peripheralsServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>computerunitscontroller</servlet-name>
+		<servlet-class> com.ims.controllers.computerunitinventory.ComputerUnitController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>computerunitscontroller</servlet-name>
+		<url-pattern>/ComputerUnitsInventory</url-pattern>
 	</servlet-mapping>
 </web-app>

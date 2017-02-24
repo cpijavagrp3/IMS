@@ -62,4 +62,12 @@ public class AssigneeMaintenanceServiceImpl implements AssigneeMaintenanceServic
 		
 		this.getDao().insertNewAssignee(params);
 	}
+
+	@Override
+	public void getAssigneeForUpdate(HttpServletRequest request) throws SQLException {
+		// TODO Auto-generated method stub
+		Integer assigneeNumber = Integer.parseInt(request.getParameter("assigneeNumber"));
+		List<Assignee> assignee = this.getDao().getAssigneeforUpdate(assigneeNumber);
+		request.setAttribute("assignee", assignee);
+	}
 }

@@ -48,4 +48,11 @@ public class AssigneeMaintenanceDaoImpl implements AssigneeMaintenanceDao {
 		}
 		
 	}
+
+	public List<Assignee> getAssigneeforUpdate(Integer params) throws SQLException {
+		// TODO Auto-generated method stub
+		return this.getSqlMapClient().queryForList("getAssigneeForUpdate", params);
+	}
+
+
 }

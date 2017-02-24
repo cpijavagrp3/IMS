@@ -6,5 +6,5 @@
 <sqlMapConfig>
 	<sqlMap resource="com/ims/dao/ibatis/assigneemaintenance/Assignee.xml" />
 	<sqlMap resource="com/ims/dao/ibatis/unitAssignment/UnitAssignment.xml" />
-	<sqlMap resource="com/ims/dao/ibatis/ComputerUnitsInventory.xml" />
+	<sqlMap resource="com/ims/dao/ibatis/computerunit/ComputerUnitsInventory.xml" />
 </sqlMapConfig>
