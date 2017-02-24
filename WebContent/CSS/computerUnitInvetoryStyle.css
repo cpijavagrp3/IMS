@@ -1,0 +1,25 @@
+.tableRow {
+	height: 20px;
+	border-bottom: 1px solid #E0E0E0;
+	padding: 3px;
+	padding-top: 7px;
+	padding-left: 0;
+}
+
+.records {
+	height: 20px;
+	border-bottom: 1px solid #E0E0E0;
+	padding: 3px;
+	padding-top: 7px;
+	padding-left: 0;
+}
+
+.lightblue {
+	background-color: #F0F8FF;
+	color: #0066CC;
+}
+
+.selectedRow {
+	background-color: #98D0FF;
+	color: #0066CC;
+}

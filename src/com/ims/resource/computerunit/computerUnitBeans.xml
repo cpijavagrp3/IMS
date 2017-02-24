@@ -25,12 +25,12 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 		<property name = "password" value = "HR" ></property>
 	</bean>
 	
-	<bean id="serviceBean" class="com.ims.service.impl.ComputerUnitServiceImpl"
+	<bean id="serviceBean" class="com.ims.service.impl.computerunit.ComputerUnitServiceImpl"
 			depends-on ="daoBean" >
 		<property name = "dao" ref = "daoBean"></property>
 	</bean>
 	
-	<bean id ="daoBean" class = "com.ims.dao.impl.DaoImpl" depends-on ="sqlMapClient">
+	<bean id ="daoBean" class = "com.ims.dao.impl.computerunit.ComputerUnitDaoImpl" depends-on ="sqlMapClient">
 		<property name = "sqlMapClient" ref = "sqlMapClient"></property>
 	</bean>
 	

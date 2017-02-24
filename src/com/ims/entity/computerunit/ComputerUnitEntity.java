@@ -1,6 +1,8 @@
-package com.ims.computerunit;
+package com.ims.entity.computerunit;
 
-public class AddComputerUnit {
+import java.util.Date;
+
+public class ComputerUnitEntity {
 	private Integer unitNo;
 	private String unitName;
 	private String tagNumber;
@@ -15,6 +17,7 @@ public class AddComputerUnit {
 	private String remarks;
 	private String userId;
 	private String lastUpdate;
+	private String deleteTag;
 	public Integer getUnitNo() {
 		return unitNo;
 	}
@@ -99,4 +102,11 @@ public class AddComputerUnit {
 	public void setLastUpdate(String lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+	public String getDeleteTag() {
+		return deleteTag;
+	}
+	public void setDeleteTag(String deleteTag) {
+		this.deleteTag = deleteTag;
+	}
+	
 }
