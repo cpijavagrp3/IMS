@@ -51,6 +51,13 @@ public class MainController extends HttpServlet {
 				page = "View/UnitAssignment/UnitAssignmentView.jsp";
 			} else if (action.equals("assignee")){
 				page = "View/AssigneeMaintenance/assigneeListing.jsp";
+			} else if(action.equals("inventory")) {
+				page = "View/ComputerUnitInventory/computerUnitsMain.jsp";
+				
+			} else if(action.equals("maintenance")) {
+				page = "View/UserMaintenance/userMaintenance.jsp";
+			} else if(action.equals("peripherals")) {
+				page = "View/Peripherals/peripherals.jsp";
 			} else
 				page = "View/test.jsp";
 			

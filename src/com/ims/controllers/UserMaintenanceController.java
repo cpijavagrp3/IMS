@@ -26,23 +26,28 @@ public class UserMaintenanceController extends HttpServlet {
 		String page = null;
 		
 		try {
+			
 			if(action.equals("loadPage")){
 				service.getUsers(request);
-				page = "View/userMaintenance.jsp";
+				page = "View/UserMaintenance/userMaintenance.jsp";
 			}else if(action.equals("addUserPage")){
-				page = "View/userMaintenanceAdd.jsp";
+				page = "View/UserMaintenance/userMaintenanceForm.jsp";
 			}else if(action.equals("backToUserMaintenance")){
 				service.getUsers(request);
-				page = "View/userMaintenance.jsp";
-			}else if(action.equals("search")){
-				page = "View/userMaintenance.jsp";
+				page = "View/UserMaintenance/userMaintenance.jsp";
+			}else if(action.equals("checkUserName")){
+				service.checkUserName(request);
+				page = "View/UserMaintenance/userMaintenanceForm.jsp";
 			}
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+			dispatcher.forward(request, response);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-		dispatcher.forward(request, response);	
+			
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,17 +61,22 @@ public class UserMaintenanceController extends HttpServlet {
 			if(action.equals("addUser")){
 				service.insertNewUser(request);
 				service.getUsers(request);
-				page = "View/userMaintenance.jsp";
-				
-				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-				dispatcher.forward(request, response);
+				page = "View/UserMaintenance/userMaintenance.jsp";
+			}else if(action.equals("updateUserInfo")){
+				service.passUserInfo(request);
+				page = "View/UserMaintenance/userMaintenanceUpdate.jsp";
+			}else if(action.equals("updateUser")){
+				service.updateUser(request);
+				service.getUsers(request);
+				page = "View/UserMaintenance/userMaintenance.jsp";
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+		dispatcher.forward(request, response);
 		
 		
 	}

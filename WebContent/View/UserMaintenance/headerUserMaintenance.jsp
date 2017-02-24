@@ -31,5 +31,7 @@
 		    $j(document).ready(function() {
 		        $j('#example').DataTable({"pagingType": "full_numbers"});
 		    });
+		    
+		    
 		</script>	
 </html>

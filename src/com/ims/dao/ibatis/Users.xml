@@ -9,16 +9,22 @@
 	
 	<resultMap id="getUsersMap" class="UsersClass">
 		<result column="user_id"			property="userId" />
+		<result column="password"			property="password" />
 		<result column="first_name"			property="firstName" />
 		<result column="last_name"			property="lastName" />
 		<result column="middle_initial"		property="middleInitial" />
+		<result column="email"				property="email" />
 		<result column="active_tag"			property="status" />
 		<result column="user_access"		property="userAccess" />
 		<result column="entry_date"			property="entryDate" />
+		<result column="remarks"			property="remarks" />
+		<result column="last_user_id"		property="lastUpdatedBy" />
+		<result column="last_update"		property="lastUpdate" />
 	</resultMap>
 	
 	<select id="getUsers" resultMap="getUsersMap">
-		SELECT user_id, first_name, middle_initial, last_name, active_tag, user_access, entry_date  
+		SELECT user_id, password, first_name, last_name, middle_initial, email, active_tag, user_access, 
+			   TO_CHAR(TO_DATE(entry_date) ,'DD-MON-RRRR') entry_date, remarks, last_user_id, TO_CHAR(TO_DATE(last_update) ,'DD-MON-RRRR')last_update
 		  FROM IMS_USERS_3
 	</select>
 	
@@ -31,22 +37,27 @@
 		END;
 	</insert>
 	
+	<update id = "updateUser" parameterClass = "java.util.Map" >
+		BEGIN
+			UPDATE IMS_USERS_3
+			SET first_name = #firstName#,
+				last_name = #lastName#,
+				middle_initial = #middleInitial#,
+				email = #email#,
+				active_tag = #status#,
+				remarks = #remarks#,
+				last_user_id = #lastUpdatedBy#,
+				last_update = #lastUpdate#
+			WHERE user_id = #userId#;
+			COMMIT;
+		END;
+	</update>
 	
-	<resultMap id="getSearchUsersMap" class="UsersClass">
+	<resultMap id="getUsersMap" class="UsersClass">
 		<result column="user_id"			property="userId" />
-		<result column="first_name"			property="firstName" />
-		<result column="last_name"			property="lastName" />
-		<result column="middle_initial"		property="middleInitial" />
-		<result column="email"				property="status" />
 	</resultMap>
 	
-	<select id="getSearchUsers" resultMap="getSearchUsersMap">
-		SELECT * FROM IMS_USERS_3 
-		 WHERE 
-			user_id LIKE '%#userId#%' OR 
-			last_name LIKE '%#lastName#%' OR 
-			first_name LIKE '%#firstName#%' OR
-			middle_initial LIKE '%#middleInitial#%' OR
-			email LIKE '%#email#%';
+	<select id="checkUserId" resultClass="java.lang.String">
+		SELECT user_id FROM IMS_USERS_3 WHERE user_id = #user_id#
 	</select>
 </sqlMap>
