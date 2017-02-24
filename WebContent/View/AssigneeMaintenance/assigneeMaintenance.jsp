@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <body>
-	<input type="button" id="btnBack" value="BACK"/>
+	<input type="button" class="form-control btn-primary" id="btnBack" value="BACK"/>
 	<label class="header">ASSIGNEE MAINTENANCE</label>
 	<table>
 	<tr>
@@ -49,8 +49,8 @@
 	</tr>
 	<tr>
 		<td></td>
-		<td><input type="button" id="btnSave" value="Save"/>
-			<input type="button" id="btnCancel" value="Cancel"/>
+		<td><input type="button" class="form-control btn-primary" id="btnSave" value="Save"/>
+			<input type="button" class="form-control btn-primary" id="btnCancel" value="Cancel"/>
 		</td>
 	</tr>
 	</table>
@@ -61,11 +61,29 @@ $("btnBack").observe("click", function() {
 });
 
 $("btnSave").observe("click", function() {
-	saveRecord();
+	if('${maintainAction}' == 'add') {
+		saveRecord("insert");
+	} else {
+		updateRecord("update");	
+	}	
 });
 
-function saveRecord() {
-	var action = ('${maintainAction}' =='add') ? "insert" : 'update';
+function updateRecord(action) {
+	new Ajax.Request("${pageContext.request.contextPath}"+"/AssigneeMaintenanceController",
+			{
+		method : "post",
+		parameters : {
+			action : action,
+			assigneeName : $F("txtAssigneeName"),
+			email : $F("txtEmail"),
+			activeTag :	(($("rdoActive").checked) ? $("rdoActive").value : $("rdoInActive").value),
+			remarks : $F("txtRemarks"),	
+			assigneeNumber : $F("txtAssigneeNumber")
+		}
+	}); 
+}
+
+function saveRecord(action) {
 	new Ajax.Request("${pageContext.request.contextPath}"+"/AssigneeMaintenanceController",
 			{
 		method : "post",
@@ -88,13 +106,12 @@ function backToAssigneeListing() {
 		parameters : {
 			action : "backToAssigneeListing"
 		}, 	onComplete : function(response) {
-			$("mainContent").update(response.responseText)
+			$("assigneeContent").update(response.responseText)
 		}
 	});
 }
 
 if('${maintainAction}'=='add') {
-	alert('add');
 	$("txtAssigneeNumber").setAttribute("disabled","disabled");
 	$("txtEntryDate").setAttribute("disabled","disabled");
 	$("txtUserId").setAttribute("disabled","disabled");
@@ -102,7 +119,36 @@ if('${maintainAction}'=='add') {
 }
 
 if('${fromUpdateButton}'=='Y') {
+	$("txtAssigneeNumber").setAttribute("disabled","disabled");
+	$("txtEntryDate").setAttribute("disabled","disabled");
+	$("txtUserId").setAttribute("disabled","disabled");
+	$("txtLastUpdate").setAttribute("disabled","disabled");
+	$("txtLocation").setAttribute("disabled","disabled");
+	$("txtDepartment").setAttribute("disabled","disabled");
+	getAssigneeValue();
+}
+
+function getAssigneeValue() {
+	$("txtAssigneeNumber").value = '${assigneeNumber}';
+	$("txtAssigneeName").value = '${assigneeName}';
+	$("txtDepartment").value = '${assigneeDepartment}';
+	$("txtLocation").value = '${assigneeLocation}';
+	$("txtEmail").value = '${assigneeEmail}';
+	$("txtEntryDate").value = '${assigneeEntryDate}';
+	$("txtRemarks").value = '${assigneeRemarks}';
+	$("txtUserId").value = '${assigneeUserId}';
+	$("txtLastUpdate").value = '${assigneeLastUpdate}';
 	
+	if('${assigneeActiveTag}' == "Y") {
+		$("rdoInActive").checked = false;
+		$("rdoActive").checked = true;
+		
+	} else {
+		$("rdoActive").checked = false;
+		$("rdoInActive").checked = true;
+		
+	}
+	//$("txtAssigneeNumber").value = assigneeNumber;
 }
 </script>
 </html>

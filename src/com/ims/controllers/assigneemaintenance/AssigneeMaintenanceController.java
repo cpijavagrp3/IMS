@@ -78,8 +78,15 @@ public class AssigneeMaintenanceController extends HttpServlet {
 			} catch(SQLException e) {
 				e.printStackTrace();
 			}
+		} else if(action.equals("update")) {
+			try {
+				System.out.println("update me!");
+				service.updateAssignee(request);
+				page = "View/AssigneeMaintenance/assigneeMaintenance.jsp";
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
 		/*else if(action.equals("assignee")) {
 			page = "assigneeListing.jsp";
 			try {

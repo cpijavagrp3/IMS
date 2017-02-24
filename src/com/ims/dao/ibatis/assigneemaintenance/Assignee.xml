@@ -54,16 +54,18 @@
 		WHERE employee_id=#employeeId#;
 		COMMIT;
 		END;
-	</delete>
+	</delete> -->
 	
-	<update id="updateEmp" parameterClass="java.util.Map">
+	<update id="updateAssignee" parameterClass="java.util.Map">
 		BEGIN
-		UPDATE emp_ibatis
-		SET first_name=#firstName#
-		WHERE employee_id = #employeeId#;
-		COMMIT;
+		UPDATE ims_assignee_3
+		SET assignee_name = #assigneeName#,
+			email = #email#,
+			active_tag = #activeTag#,
+			remarks = #remarks#,
+			last_update = SYSDATE
+		WHERE assignee_no = #assigneeNumber#;
 		END;
-	</update> -->
-	
+	</update> 
 
 </sqlMap>

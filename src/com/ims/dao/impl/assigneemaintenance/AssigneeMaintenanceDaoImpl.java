@@ -54,5 +54,25 @@ public class AssigneeMaintenanceDaoImpl implements AssigneeMaintenanceDao {
 		return this.getSqlMapClient().queryForList("getAssigneeForUpdate", params);
 	}
 
+	@Override
+	public void updateAssignee(Map<String, Object> params) throws SQLException {
+		// TODO Auto-generated method stub
+		try{
+			this.getSqlMapClient().startTransaction();
+			this.getSqlMapClient().getCurrentConnection().setAutoCommit(false);
+			this.getSqlMapClient().startBatch();
+			
+			this.getSqlMapClient().insert("updateAssignee", params);
+			this.getSqlMapClient().executeBatch();
+			this.getSqlMapClient().getCurrentConnection().commit();
+		}catch(SQLException e){
+			this.getSqlMapClient().getCurrentConnection().rollback();
+			System.out.println("in catch");
+			e.printStackTrace();
+		}finally{
+			this.getSqlMapClient().endTransaction();
+		}
+	}
+
 
 }

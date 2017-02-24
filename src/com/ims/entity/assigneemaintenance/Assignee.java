@@ -113,8 +113,13 @@ public class Assignee {
 		return lastUpdate;
 	}
 
-	public void setLastUpdate(String lastUpdate) {
-		this.lastUpdate = lastUpdate;
+	public void setLastUpdate(String lastUpdate) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat();
+        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        DateFormat targetFormat = new SimpleDateFormat("MMM dd, yyyy");
+        Date date = originalFormat.parse(lastUpdate);
+        String formattedDate = targetFormat.format(date); 
+		this.lastUpdate = formattedDate.toUpperCase();
 	}
 
 }

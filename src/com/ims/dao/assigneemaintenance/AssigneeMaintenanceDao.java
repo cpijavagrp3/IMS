@@ -10,4 +10,5 @@ public interface AssigneeMaintenanceDao {
 	List<Assignee> getAssignee() throws SQLException;
 	void insertNewAssignee(Map<String, Object> params) throws SQLException;
 	List<Assignee> getAssigneeforUpdate(Integer params) throws SQLException;
+	void updateAssignee(Map<String, Object> params) throws SQLException;
 }

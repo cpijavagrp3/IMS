@@ -21,6 +21,7 @@ public class UserMaintenanceController extends HttpServlet {
 		ApplicationContext context = new ClassPathXmlApplicationContext("/com/ims/resource/userMaintenanceBeans.xml");
 		UserMaintenanceService service = (UserMaintenanceService) context.getBean("serviceBean");
 		
+		
 		String action = request.getParameter("action");
 		String page = null;
 		

@@ -13,12 +13,12 @@
 		<table>
 			<tr>
 				<td><label>Username: </label></td>
-				<td><input type="text" id="txtUsername" class="form-control"></td>
+				<td><input type="text" id="txtUsername" class="form-control" value="CPI"></td>
 			</tr>
 			<tr>
 				<td><label>Password: </label></td>
 				<td><input type="password" id="txtPassword"
-					class="form-control"></td>
+					class="form-control" value="123"></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -48,5 +48,4 @@
 		});
 	}
 </script>
-
 </html>
