@@ -1,20 +1,74 @@
+* {
+	margin: 0;
+	padding: 0;
+}
 
-body{
-	font-family: Candara;
+body {
+	font-family: Trebuchet MS;
 }
-			
-th{
-	padding: 5px 10px 5px 10px;
+
+div#formHolder {
+	padding: 20px 0 20px 20px;
+	border: 1px solid #DADFE1;
+	width: 535px;
+	border-radius: 5px;
+	text-align:left;
 }
-			
-td{
-	padding: 3px 10px 3px 2px;
+
+div#formHolder>.form-control {
+	margin-bottom: 10px;
+	display: inline-block;
+	width: 200px;
 }
-			
-input{
-	padding: 3px 10px 3px 10px;
+
+div#formHolder>.txtboxMi {
+	width: 82px;
 }
-			
-select{
-	padding: 5px 0 5px 3px;
+
+div#formHolder>.txtbox {
+	width: 490px;
+}
+
+div#formHolder>.txtboxDisable {
+	width: 237px;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+div#btnHolder {
+	background: #6C7A89;
+	color: ##8e8f91;
+	margin-left: -20px;
+	margin-bottom: -20px;
+	padding: 16px 0 15px 20px;
+	border-radius: 0 0 5px 5px;
+}
+
+div#btnHolder>.btnControls {
+	width: 237px;
+	margin-right: 10px;
+}
+
+div#rdoHolder {
+	border: 1px solid #BFBFBF;
+	padding: 6px 14px 6px 14px;
+	border-radius: 5px;
+	width: 490px;
+	display: inline-block;
+	margin-bottom: 8px;
+}
+
+div#labelHolder {
+	border-bottom: 1px solid #DADFE1;
+	background: #6C7A89;
+	margin-left: -20px;
+	margin-top: -20px;
+	padding: 10px 0 5px 10px;
+	text-align: center;
+	color: white;
+	border-radius: 5px 5px 0 0;
+}
+
+div#labelHolder>.labelControl {
+	display: inline-block;
 }

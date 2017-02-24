@@ -64,6 +64,11 @@ public class UserMaintenanceDaoImpl implements UserMaintenanceDao{
 			this.getSqlMapClient().endTransaction();
 		}
 	}
-
+	
+	@Override
+	public String checkUserName(String userId) throws SQLException {
+		return (String) this.getSqlMapClient().queryForObject("checkUserId", userId);
+	}
+	
 
 }

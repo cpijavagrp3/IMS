@@ -11,77 +11,52 @@
 	</head>
 	
 	<body>
-		<h1>Update User</h1>
-		<input type = "button" id = "btnBack" value = "Back"/><br><br>
+		<center>
+		<div class="alert alert-warning" role="alert" id = "errorField"><strong>Warning!</strong> Please Fill all the Fields...</div>
+		<div id = "formHolder" class = "float_center">
+			<div id = "labelHolder">
+				<button class = "btn btn-success" style = "float:left;margin-top:6px;margin-left:10px;" id = "btnBack"><span class = "glyphicon glyphicon-arrow-left"></span> </button>
+				<h4 class = "labelControl" style = "margin-left:-60px;">User Maintenance</h4>	
+			</div><br>
 		
-		<table>
-			<tr>
-				<td><label>USER ID </label></td>
-				<td><input type = "text" id = "txtUserId" maxlength = "15" readonly = "readonly" disabled value = "${userId}"/></td>
-			</tr>
+			<label>User ID</label>
+			<input type = "text" id = "txtUserId" 			class = "form-control txtbox" 	value = "${userId}" 	maxlength = "15" disabled/><br>
 			
-			<tr>
-				<td><label>FIRST NAME </label></td>
-				<td><input type = "text" id = "txtFirstName" maxlength = "250" value = "${firstName}"/></td>
-			</tr>
+			<label>Full Name</label><br>
+			<input type = "text" id = "txtFirstName" 		class = "form-control" 			value = "${firstName}" 		maxlength = "250"/>
+			<input type = "text" id = "txtLastName" 		class = "form-control" 			value = "${lastName}" 		maxlength = "250"/>
+			<input type = "text" id = "txtMiddleInitial" 	class = "form-control txtboxMi" value = "${middleInitial}" 	maxLength = "3"/><br>
 			
-			<tr>
-				<td><label>MIDDLE INITIAL </label></td>
-				<td><input type = "text" id = "txtMiddleInitial" maxlength = "3" value = "${middleInitial}"/></td>
-			</tr>
+			<label>Email</label><br>
+			<input type = "text" id = "txtEmail" 			class = "form-control txtbox" 	value = "${email}"/><br>
 			
-			<tr>
-				<td><label>LAST NAME </label></td>
-				<td><input type = "text" id = "txtLastName" maxlength = "250" value = "${lastName}"/></td>
-			</tr>
+			<label>Status</label><br>
+			<div id = "rdoHolder">
+				<input type = "radio" id = "rdoActive" 		name = "rdoName" value = "Y" />Active &nbsp;&nbsp;&nbsp;&nbsp;
+				<input type = "radio" id = "rdoInactive" 	name = "rdoName" value = "N" />Inactive
+			</div><br>
 			
-			<tr>
-				<td><label>EMAIL </label></td>
-				<td><input type = "text" id = "txtEmail" maxlength = "100" value = "${email}"/></td>
-			</tr>
+			<label>Remarks</label><br>
+			<textarea id = "txtRemarks"	rows = "1" cols = "1" 		class = "form-control txtbox" >${remarks}</textarea><br>
+
+			<label>User Access</label> 		<label style = "margin-left:170px;">Entry Date</label> <br>
+			<select id = "selectUserAccess" class = "form-control txtboxDisable" disabled><option>ADMIN</option> <option>USER</option></select>
 			
-			<tr>
-				<td><label>STATUS </label></td>
-				<td>
-					<input type = "radio" id = "rdoActive" 		name = "rdoName" value = "Y" />Active 
-					<input type = "radio" id = "rdoInactive" 	name = "rdoName" value = "N" />Inactive
-				</td>
-			</tr>
+			<input type = "text" id = "txtEntryDate"	 	class = "form-control txtboxDisable" 	value = "${entryDate}"  	disabled/>
+			<label>Last Updated By</label> 	<label style = "margin-left:143px;">Last Update</label> <br>
+			<input type = "text" id = "txtLastUpdatedBy" 	class = "form-control txtboxDisable" 	value = "${lastUpdatedBy}" 	disabled/>
+			<input type = "text" id = "txtLastUpdate"		class = "form-control txtboxDisable" 	value = "${lastUpdate}"		disabled/><br><br>
 			
-			<tr>
-				<td><label>USER ACCESS </label></td>
-				<td><input type = "text" id = "txtUserAccess" style = "text-align:left;width:100%;" disabled value = "${userAccess}" /></td>
-			
-			<tr>
-				<td><label>ENTRY DATE </label></td>
-				<td><input type = "text" id = "txtEntryDate" value = "${entryDate}" readonly = "readonly" disabled/></td>
-			</tr>
-			
-			<tr>
-				<td><label>REMARKS </label></td>
-				<td><input type = "text" id = "txtRemarks" maxlength = "1000" value = "${remarks}"/></td>
-			</tr>
-			
-			<tr>
-				<td><label>LAST UPDATED BY </label></td>
-				<td><input type = "text" id = "txtLastUpdatedBy" readonly = "readonly" disabled value = "${lastUpdatedBy}"/></td>
-			</tr>
-			
-			<tr>
-				<td><label>LAST UPDATE </label></td>
-				<td><input type = "text" id = "txtLastUpdate" value = "${lastUpdate}" readonly="readonly" disabled/></td>
-			</tr>
-			
-			<tr>
-				<td><input type = "button" id = "btnSave" value = "Save" style = "width: 100%; margin-top:20px;"/></td>
-				<td><input type = "button" id = "btnChangePassword" value = "Change Password" style = "width: 100%; margin-top:20px;"/></td>
-			</tr>
-			
-		</table>	
-		
+			<div id = "btnHolder">
+				<button id = "btnSave" 			class = "btn btn-primary btnControls"><span class = "glyphicon glyphicon-floppy-disk"></span>&nbsp; Save</button>
+				<button id = "btnChangePass"	class = "btn btn-success btnControls"><span class = "glyphicon glyphicon-pencil"></span>&nbsp; Change Password</button>	
+			</div>
+		</div>
+		</center>
 	</body>
 	
 	<script type="text/javascript">
+		$('errorField').hide();
 		var contextPath = "${pageContext.request.contextPath}";
 		
 		var status = '${status}';
@@ -121,13 +96,15 @@
 			var email = 		$F("txtEmail");
 			
 			if(userId == "" || firstName == "" || lastName == "" || middleInitial == "" || email == ""){
-				alert("Please Fill All the Fields");
+				$('errorField').show();
 			}else if(userId == null || firstName == null || lastName == null || middleInitial == null){
-				alert("Please Fill All the Fields");
+				$('errorField').show();
 			}else if(!isNaN(firstName) || !isNaN(lastName) || !isNaN(middleInitial)){
-				alert("Please Enter Letters Only for Names.");
+				$('errorField').innerHTML = "<strong>Warning!</strong> Names should be letters only...";
+				$('errorField').show();
 			}else if(email != "" && !email.includes("@")){
-				alert("Invalid Email Address.");
+				$('errorField').innerHTML = "<strong>Warning!</strong> Invalid email address...";
+				$('errorField').show();
 			}else{
 				updateUser();
 			}

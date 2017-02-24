@@ -84,7 +84,9 @@ public class UserMaintenanceServiceImpl implements UserMaintenanceService{
 		request.setAttribute("remarks", remarks);
 		request.setAttribute("lastUpdatedBy", lastUpdatedBy);
 		request.setAttribute("lastUpdate", lastUpdate);
+
 	}
+	
 	@Override
 	public void updateUser(HttpServletRequest request) throws SQLException {
 		String userId = request.getParameter("userId");
@@ -113,6 +115,14 @@ public class UserMaintenanceServiceImpl implements UserMaintenanceService{
 			params.put("lastUpdate", lastUpdate);
 			
 		this.getDao().updateUser(params);
+	}
+	
+	@Override
+	public void checkUserName(HttpServletRequest request) throws SQLException {
+		String userId = request.getParameter("userId");
+		String text = this.getDao().checkUserName(userId);
+		
+		System.out.println(text);
 	}
 	
 }

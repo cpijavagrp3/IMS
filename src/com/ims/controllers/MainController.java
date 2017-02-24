@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.ims.service.UserMaintenanceService;
+
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -16,6 +21,8 @@ public class MainController extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ApplicationContext contextUserMaintenance = new ClassPathXmlApplicationContext("/com/ims/resource/userMaintenanceBeans.xml");
+		UserMaintenanceService service = (UserMaintenanceService) contextUserMaintenance.getBean("serviceBean");
 		
 		String page = "";
 		String action = request.getParameter("action");
@@ -33,7 +40,10 @@ public class MainController extends HttpServlet {
 				page = "View/UnitAssignment/UnitAssignmentView.jsp";
 			} else if (action.equals("assignee")){
 				page = "View/AssigneeMaintenance/assigneeListing.jsp";
-			} else
+			} else if (action.equals("maintenance")){
+				service.getUsers(request);
+				page = "View/UserMaintenance/userMaintenance.jsp";
+			}else
 				page = "View/test.jsp";
 			
 		} catch (Exception e) {

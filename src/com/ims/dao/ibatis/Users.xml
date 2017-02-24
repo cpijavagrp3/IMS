@@ -52,4 +52,12 @@
 			COMMIT;
 		END;
 	</update>
+	
+	<resultMap id="getUsersMap" class="UsersClass">
+		<result column="user_id"			property="userId" />
+	</resultMap>
+	
+	<select id="checkUserId" resultClass="java.lang.String">
+		SELECT user_id FROM IMS_USERS_3 WHERE user_id = #user_id#
+	</select>
 </sqlMap>

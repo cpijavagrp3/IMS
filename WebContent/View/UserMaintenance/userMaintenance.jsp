@@ -13,13 +13,11 @@
 	</head>
 	
 	<body>
-		<div class = "container container-fluid">
-			<div id = "contents">
-				<br>
-					<button type="button" class="btn btn-primary" id = "btnAddUser" style = "float:right;"><span class="glyphicon  glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp; Add User</button>
+		<div id = "contents">
+			<div class = "container container-fluid">
+
+				<br><button type="button" class="btn btn-primary" id = "btnAddUser" style = "float:right;"><span class="glyphicon  glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp; Add User</button>
 				<br><br>
-				
-				
 				<table id="example" class="table table-hover table-condensed" cellspacing="0" width="100%">
 					<thead>
 						<tr>
@@ -43,7 +41,6 @@
 				       
 				   	<tbody>
 				        <c:forEach var = "a" items = "${userList}">
-				        	
 							<tr class = "rows">
 								<!-- 0 --><td>${a.getUserId()}</td>
 								<!-- 1 --><td>${a.getFirstName()} ${a.getMiddleInitial()} ${a.getLastName()}</td>
@@ -61,15 +58,12 @@
 								<!-- 12 --><td style = "display:none;">${a.getMiddleInitial()}</td>
 								
 								<!-- 13 --><td><button type="button" class="btn btn-success btnUpdate" ><span class="glyphicon  glyphicon glyphicon-pencil" aria-hidden="true"></span></button></td>
-							</tr>
-							
-						</c:forEach>
-						
-				   	</tbody>
-				         
+							</tr>	
+						</c:forEach>	
+				   	</tbody>         
 				</table>
 				
-				
+
 			</div>
 		</div>
 			

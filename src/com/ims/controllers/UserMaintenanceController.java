@@ -30,10 +30,13 @@ public class UserMaintenanceController extends HttpServlet {
 				service.getUsers(request);
 				page = "View/UserMaintenance/userMaintenance.jsp";
 			}else if(action.equals("addUserPage")){
-				page = "View/UserMaintenance/userMaintenanceAdd.jsp";
+				page = "View/UserMaintenance/userMaintenanceForm.jsp";
 			}else if(action.equals("backToUserMaintenance")){
 				service.getUsers(request);
 				page = "View/UserMaintenance/userMaintenance.jsp";
+			}else if(action.equals("checkUserName")){
+				service.checkUserName(request);
+				page = "View/UserMaintenance/userMaintenanceForm.jsp";
 			}
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
