@@ -46,7 +46,7 @@
 	</servlet-mapping>
   
   <welcome-file-list>
-    <welcome-file>/View/ComputerUnitInventory/computerUnitsMain.jsp</welcome-file>
+    <welcome-file>/View/LoginView.jsp</welcome-file>
   </welcome-file-list>
   
   	<servlet>

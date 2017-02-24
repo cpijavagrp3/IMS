@@ -21,17 +21,34 @@
 		SELECT 	assignee_no, assignee_name, department, location, email,
 				active_tag, entry_date , remarks, user_id, last_update
 		  FROM ims_assignee_3
+		ORDER BY assignee_no
 	</select>
 	
-<!-- 	<insert id="insertNewEmp" parameterClass="java.util.Map">
+	<select id="getAssigneeForUpdate" resultMap="getAssigneeMap" parameterClass="java.lang.Integer">
+		SELECT 	assignee_no, assignee_name, department, location, email,
+				active_tag, entry_date , remarks, user_id, last_update
+		  FROM ims_assignee_3
+		 WHERE assignee_no = #assigneeNumber#
+		ORDER BY assignee_no
+	</select>
+	
+ 	<insert id="insertNewAssignee" parameterClass="java.util.Map">
 		BEGIN
-		INSERT INTO emp_ibatis(employee_id, first_name)
-		VALUES(#employeeId#,#firstName#);
-		COMMIT;
+		INSERT INTO IMS_ASSIGNEE_3 
+			(ASSIGNEE_NO, ASSIGNEE_NAME, DEPARTMENT, LOCATION, 
+			EMAIL, ACTIVE_TAG, ENTRY_DATE, REMARKS, USER_ID, LAST_UPDATE) 
+			VALUES((SELECT LAST_NUMBER FROM user_sequences WHERE sequence_name = 'IMS_ASSIGNEE_3_SEQ'), 
+			#assigneeName#, #department#, #location#, #email#, 
+			#activeTag#, SYSDATE, #remarks#, 'CPI', SYSDATE);
 		END;
 	</insert>
 	
-	<delete id="deleteNewEmp" parameterClass="java.util.Map">
+	<select id="incrementAssigneeSeq">
+		SELECT ims_assignee_3_seq.nextval
+		FROM DUAL
+	</select>
+	
+	<!--  <delete id="deleteNewEmp" parameterClass="java.util.Map">
 		BEGIN
 		DELETE FROM emp_ibatis
 		WHERE employee_id=#employeeId#;
